@@ -1,0 +1,192 @@
+{
+  "node": "v24.19.0",
+  "aontu": "0.76.0",
+  "checks": 8,
+  "passed": 8,
+  "results": [
+    {
+      "name": "A concrete value refines a default",
+      "passed": true,
+      "observed": {
+        "service": {
+          "port": 9090
+        }
+      }
+    },
+    {
+      "name": "Conflicting literals fail with both source sites",
+      "passed": true,
+      "observed": {
+        "verdict": "invalid",
+        "truncated": false,
+        "findings": [
+          {
+            "code": "scalar_value",
+            "class": "conflict",
+            "severity": "error",
+            "path": "$.service.port",
+            "message": "[aontu/scalar_value]: Cannot unify values at path $.service.port",
+            "sites": [
+              {
+                "file": "data",
+                "row": 1,
+                "col": 17,
+                "len": 4,
+                "role": "data",
+                "src": "9090",
+                "value": "9090"
+              },
+              {
+                "file": "schema",
+                "row": 1,
+                "col": 17,
+                "len": 4,
+                "role": "schema",
+                "src": "8080",
+                "value": "8080"
+              }
+            ],
+            "hint": "Literal scalar values of the same kind can only unify if they are\nexactly equal.\n \nExamples:\n  1 & 1   -> 1    # Does unify (equal Integers);\n  a & a   -> a    # Does unify (equal Strings);\n  1 & 2   -> nil  # Does not unify (unequal Integers);\n  1 & 1.0 -> nil  # Does not unify (kinds: Integer & Float)."
+          }
+        ]
+      }
+    },
+    {
+      "name": "A quoted number is invalid, with an empty-disjunction diagnostic",
+      "passed": true,
+      "observed": {
+        "verdict": "invalid",
+        "truncated": false,
+        "findings": [
+          {
+            "code": "empty",
+            "class": "conflict",
+            "severity": "error",
+            "path": "$.service.port",
+            "message": "[aontu/empty]: Cannot unify values at path $.service.port",
+            "sites": [
+              {
+                "file": "data",
+                "row": 1,
+                "col": 17,
+                "len": 6,
+                "role": "data",
+                "src": "\"9090\"",
+                "value": "\"9090\""
+              },
+              {
+                "file": "schema",
+                "row": 1,
+                "col": 17,
+                "len": 1,
+                "role": "schema",
+                "src": "*",
+                "value": "*8080|integer"
+              }
+            ],
+            "hint": "Empty disjunction. The disjunction has no valid alternatives."
+          }
+        ]
+      }
+    },
+    {
+      "name": "An open map admits a misspelled key and supplies the default",
+      "passed": true,
+      "observed": {
+        "report": {
+          "verdict": "valid",
+          "truncated": false,
+          "findings": []
+        },
+        "generated": {
+          "service": {
+            "port": 8080,
+            "prot": 9090
+          }
+        }
+      }
+    },
+    {
+      "name": "Closing the service map rejects the misspelled key",
+      "passed": true,
+      "observed": {
+        "verdict": "invalid",
+        "truncated": false,
+        "findings": [
+          {
+            "code": "closed",
+            "class": "conflict",
+            "severity": "error",
+            "path": "$.service.prot",
+            "message": "[aontu/closed]: Cannot resolve value at path $.service.prot",
+            "sites": [
+              {
+                "file": "data",
+                "row": 1,
+                "col": 17,
+                "len": 4,
+                "role": "data",
+                "src": "9090",
+                "value": "9090"
+              }
+            ],
+            "hint": "Cannot add to closed structure. The map or list is closed and does not accept new keys/elements."
+          }
+        ]
+      }
+    },
+    {
+      "name": "A missing defaulted field is valid and can be generated",
+      "passed": true,
+      "observed": {
+        "report": {
+          "verdict": "valid",
+          "truncated": false,
+          "findings": []
+        },
+        "generated": {
+          "service": {
+            "port": 8080
+          }
+        }
+      }
+    },
+    {
+      "name": "A missing field without a default is incomplete",
+      "passed": true,
+      "observed": {
+        "verdict": "incomplete",
+        "truncated": false,
+        "findings": [
+          {
+            "code": "mapval_required",
+            "class": "incomplete",
+            "severity": "error",
+            "path": "$.service.port",
+            "message": "[aontu/mapval_required]: Cannot resolve value at path $.service.port",
+            "sites": [
+              {
+                "file": "schema",
+                "row": 1,
+                "col": 23,
+                "len": 7,
+                "role": "schema",
+                "src": "integer",
+                "value": "integer"
+              }
+            ],
+            "hint": "This map value is required."
+          }
+        ]
+      }
+    },
+    {
+      "name": "An integer port still needs an application-specific range",
+      "passed": true,
+      "observed": {
+        "withoutRange": "valid",
+        "withRange": "invalid"
+      }
+    }
+  ]
+}

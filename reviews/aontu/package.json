@@ -1,0 +1,10 @@
+{
+  "name": "aontu-validation-review",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reproducible examples for a critical review of Aontu validation semantics",
+  "license": "MIT",
+  "engines": { "node": ">=24" },
+  "scripts": { "test": "node check.cjs" },
+  "dependencies": { "aontu": "0.76.0" }
+}
