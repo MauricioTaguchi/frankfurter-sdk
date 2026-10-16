@@ -1,0 +1,346 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @mauriciotaguchi/frankfurter-sdk@0.0.1 pretest
+> npm run build
+
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> @mauriciotaguchi/frankfurter-sdk@0.0.1 build
+> node -e "for (const p of process.argv.slice(1)) require('fs').rmSync(p, { recursive: true, force: true })" dist dist-test && tsc --build src test
+
+
+> @mauriciotaguchi/frankfurter-sdk@0.0.1 test
+> node --enable-source-maps --test-concurrency=1 --test "dist-test/**/*.test.js"
+
+▶ README example
+  ✔ lead-language quickstart runs in test mode (18.197905ms)
+✔ README example (19.283298ms)
+clean: swept 811 surface(s), 0 leak(s)
+▶ clean
+  ✔ no credential leaves the SDK in any form (188.944444ms)
+  ✔ the sweep can see a leak: clean switched off shows the credential (8.164123ms)
+✔ clean (198.684237ms)
+▶ definition
+  ✔ coverage.load GET /coverage (24.581525ms)
+  ✔ currency.list GET /currencies (7.318191ms)
+  ✔ currency.load GET /currency/{code} (6.108749ms)
+  ✔ provider.list GET /providers (3.843102ms)
+  ✔ provider.load GET /providers/{provider} (4.212436ms)
+  ✔ rate.list GET /providers/{provider}/rates (3.796118ms)
+  ✔ rate.list GET /rates (5.874472ms)
+  ✔ rate.load GET /providers/{provider}/rate/{base}/{quote} (4.584242ms)
+  ✔ rate.load GET /rate/{base}/{quote} (3.975419ms)
+✔ definition (68.352173ms)
+▶ CoverageDirect
+  ✔ direct-exists (9.153981ms)
+  ✔ direct-load-coverage (6.393924ms)
+✔ CoverageDirect (16.877611ms)
+▶ CoverageEntity
+  ✔ instance (9.170367ms)
+  ﹣ validate (0.395102ms) # feature not present in this SDK: validate
+  ✔ basic (11.973966ms)
+✔ CoverageEntity (23.043632ms)
+▶ CurrencyDirect
+  ✔ direct-exists (14.258217ms)
+  ✔ direct-load-currency (12.352143ms)
+  ✔ direct-list-currency (4.877343ms)
+✔ CurrencyDirect (33.188553ms)
+▶ CurrencyEntity
+  ✔ instance (14.218759ms)
+  ✔ stream-error (18.707489ms)
+  ✔ stream-ctrl (6.331714ms)
+  ✔ unexpected (4.946425ms)
+  ﹣ validate (0.42403ms) # feature not present in this SDK: validate
+  ✔ basic (12.324172ms)
+✔ CurrencyEntity (59.510737ms)
+▶ ProviderDirect
+  ✔ direct-exists (9.176952ms)
+  ✔ direct-load-provider (5.18053ms)
+  ✔ direct-list-provider (3.404616ms)
+✔ ProviderDirect (19.141574ms)
+▶ ProviderEntity
+  ✔ instance (9.519118ms)
+  ✔ stream-error (22.449613ms)
+  ✔ stream-ctrl (6.915959ms)
+  ✔ unexpected (5.102426ms)
+  ﹣ validate (0.715745ms) # feature not present in this SDK: validate
+  ✔ basic (14.682079ms)
+✔ ProviderEntity (61.240726ms)
+▶ RateDirect
+  ✔ direct-exists (11.268064ms)
+  ✔ direct-load-rate (16.347005ms)
+  ✔ direct-list-rate (3.185461ms)
+✔ RateDirect (33.262548ms)
+▶ RateEntity
+  ✔ instance (15.743952ms)
+  ✔ stream-error (31.644458ms)
+  ✔ stream-ctrl (8.870133ms)
+  ✔ unexpected (5.103575ms)
+  ﹣ validate (0.667262ms) # feature not present in this SDK: validate
+  ✔ basic (12.43457ms)
+✔ RateEntity (76.614568ms)
+▶ exists
+  ✔ test-mode (32.215105ms)
+✔ exists (33.31161ms)
+▶ feature
+  ✔ at least the test feature is present (2.035045ms)
+  ▶ abort
+    ﹣ a caller abort cancels a request the timeout feature wraps (1.544824ms) # this SDK was generated without the timeout feature
+    ﹣ the deadline still fires while the caller signal stays live (0.117873ms) # this SDK was generated without the timeout feature
+    ﹣ an aborted request is not retried (0.088379ms) # this SDK was generated without the retry feature
+    ﹣ an abort whose reason is not an Error is not retried either (0.117081ms) # this SDK was generated without the retry feature
+    ﹣ an abort during the retry backoff ends it (2.505907ms) # this SDK was generated without the retry feature
+    ﹣ an abort during simulated latency ends the request before the transport (0.180226ms) # this SDK was generated without the netsim feature
+    ﹣ an abort while waiting for a rate-limit token ends the wait (0.172957ms) # this SDK was generated without the ratelimit feature
+    ✔ the test transport aborts a request in flight (85.861913ms)
+  ✔ abort (95.147967ms)
+✔ feature (104.133828ms)
+▶ FeatureCorpus
+  ✔ the corpus carries a feature section (1.040415ms)
+  ✔ this SDK has an operation the corpus can drive (0.367948ms)
+  ﹣ cost (7.846521ms) # this SDK was generated without the cost feature
+  ℹ feature.cost: inert (this SDK does not generate the feature)
+✔ FeatureCorpus (49.615807ms)
+▶ netsim
+  ✔ offline simulation fails the request (21.761338ms)
+  ✔ failStatus simulation surfaces the error status (7.447724ms)
+  ✔ latency simulation delays the request (67.629892ms)
+  ✔ a plain test SDK still works with no net simulation (4.099556ms)
+✔ netsim (102.777293ms)
+▶ omni
+  ✔ runset passes a correct subject (22.291825ms)
+  ✔ runset FAILS a wrong result, with OmniError (12.967851ms)
+  ✔ an expected error is matched, an unexpected one fails (7.537769ms)
+✔ omni (44.019ms)
+▶ pipeline:makePoint + makeSpec
+  ✔ makePoint rejects a disallowed operation (1.06004ms)
+  ✔ makePoint rejects an operation with no endpoints (0.227974ms)
+  ✔ makePoint returns the single point (0.744856ms)
+  ✔ makePoint short-circuits a feature-supplied point (1.304577ms)
+  ✔ an allow list names whole operations, in any case (0.233074ms)
+  ✔ an allow list names whole methods (0.47234ms)
+  ✔ makeSpec short-circuits a feature-supplied spec (0.177036ms)
+✔ pipeline:makePoint + makeSpec (6.4146ms)
+▶ pipeline:direct
+  ✔ direct and graphql answer a method allow.method refuses with a result map (15.339648ms)
+✔ pipeline:direct (15.598424ms)
+▶ pipeline:makeResponse
+  ✔ guards missing spec / response / result (1.122567ms)
+  ✔ a 4xx response sets result.err and copies headers (0.720789ms)
+  ✔ a 2xx response parses the body and marks ok (0.772181ms)
+  ✔ records to ctrl.explain when explain is on (0.287962ms)
+  ✔ a body-parse exception is captured on result.err (0.261503ms)
+  ✔ short-circuits when a feature already supplied the response (0.109979ms)
+✔ pipeline:makeResponse (3.730372ms)
+▶ pipeline:makeResult
+  ✔ guards missing spec / result (0.277068ms)
+  ✔ list op wraps resdata into entity instances (0.144661ms)
+  ✔ an empty list yields an empty resdata array (0.118289ms)
+  ✔ short-circuits on a preset result (0.087762ms)
+✔ pipeline:makeResult (0.774765ms)
+▶ pipeline:makeRequest
+  ✔ guards a missing spec (0.526494ms)
+  ✔ a null transport result becomes a response error (0.915867ms)
+  ✔ an Error transport result is carried on the response (0.322595ms)
+  ✔ a normal transport response is wrapped (0.185059ms)
+  ✔ records the fetchdef to ctrl.explain (0.160359ms)
+  ✔ a fetchdef error surfaces as a response error (0.209225ms)
+  ✔ short-circuits a feature-supplied request (0.102677ms)
+✔ pipeline:makeRequest (2.690204ms)
+▶ pipeline:makeFetchDef
+  ✔ guards a missing spec (0.204548ms)
+  ✔ serialises an object body to JSON and inits a missing result (0.362213ms)
+✔ pipeline:makeFetchDef (0.68953ms)
+▶ pipeline:makeError + done
+  ✔ done returns resdata on success (0.266711ms)
+  ✔ done throws the error when not ok (2.340889ms)
+  ✔ done cleans ctrl.explain on success (0.449933ms)
+  ✔ makeError returns resdata instead of throwing when ctrl.throw is false (0.463611ms)
+  ✔ makeError records to ctrl.explain (2.003812ms)
+✔ pipeline:makeError + done (5.739851ms)
+▶ pipeline:featureAdd ordering
+  ✔ appends by default (0.227846ms)
+  ✔ __before__ inserts ahead of the named feature (0.140411ms)
+  ✔ __after__ inserts behind the named feature (0.190283ms)
+  ✔ __replace__ swaps the named feature (0.113588ms)
+✔ pipeline:featureAdd ordering (0.949913ms)
+▶ pipeline:feature order
+  ✔ map form is ordered test-first (test is the base transport) (2.615169ms)
+  ✔ array form preserves the explicit developer-specified order (2.449968ms)
+  ✔ map form with no test orders names deterministically (1.966308ms)
+✔ pipeline:feature order (7.224966ms)
+▶ pipeline:prepareAuth
+  ✔ guards a missing spec (0.835072ms)
+  ✔ the probe finds the credential this SDK places (0.111174ms)
+  ✔ the apikey is placed where this API puts it (0.096516ms)
+  ✔ a raw apikey (empty prefix) goes in as-is (0.272042ms)
+  ✔ an empty apikey drops the credential (0.253848ms)
+  ✔ a public API (no auth block) drops the credential (0.181989ms)
+  ✔ a missing apikey option drops the credential (0.1738ms)
+  ✔ HTTP Basic sends the key with a blank password (0.245558ms)
+✔ pipeline:prepareAuth (2.536108ms)
+▶ pipeline:prepareQuery
+  ✔ a path parameter stays out of the query (0.338987ms)
+  ✔ an action is never a query parameter (0.105859ms)
+  ✔ a query argument goes out under its orig (0.262395ms)
+✔ pipeline:prepareQuery (0.869696ms)
+▶ pipeline:result helpers
+  ✔ resultHeaders with no forEach yields an empty map (0.192726ms)
+  ✔ resultBody skips parsing when the body is absent (0.10713ms)
+  ✔ resultBody masks a registered value in the agent and across the preview bound (0.626352ms)
+✔ pipeline:result helpers (1.03747ms)
+README examples [root README.md]: total=4 executed=4 typechecked=0 illustration=0
+README examples [ts/README.md]: total=22 executed=18 typechecked=1 illustration=3
+README examples [ts/REFERENCE.md]: total=14 executed=13 typechecked=0 illustration=1
+(node:191) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+▶ README examples
+  ✔ root README.md — every example type-checks or is a known illustration (913.568757ms)
+  ✔ root README.md — every runnable example executes in test mode (148.762601ms)
+  ✔ ts/README.md — every example type-checks or is a known illustration (3130.12979ms)
+  ✔ ts/README.md — every runnable example executes in test mode (125.013212ms)
+  ✔ ts/REFERENCE.md — every example type-checks or is a known illustration (1722.165636ms)
+  ✔ ts/REFERENCE.md — every runnable example executes in test mode (38.02829ms)
+✔ README examples (6079.770103ms)
+▶ Corpus
+  ✔ the corpus is not empty (0.858575ms)
+  ✔ every empty section declares why it is deferred (0.225098ms)
+  ✔ every deferral gives a real reason (0.195916ms)
+  ✔ a deferred section that gained cases is promoted (0.179723ms)
+  ✔ every section has a basic.set list (0.266219ms)
+✔ Corpus (3.370987ms)
+▶ Custom
+  ✔ basic (9.547418ms)
+✔ Custom (10.641043ms)
+▶ PrimaryUtility
+  ✔ exists (2.002618ms)
+  ✔ context-basic (1.560109ms)
+  ✔ method-basic (1.019749ms)
+  ✔ headers-basic (0.756141ms)
+  ✔ auth-basic (4.871168ms)
+  ✔ params-basic (0.613365ms)
+  ✔ query-basic (0.915157ms)
+  ✔ body-basic (1.418472ms)
+  ✔ findparam-basic (1.092109ms)
+  ✔ fullurl-basic (1.101096ms)
+  ✔ operator-basic (0.220159ms)
+  ✔ options-basic (7.328645ms)
+  ✔ spec-basic (2.864676ms)
+  ✔ reqform-basic (0.454647ms)
+  ✔ resform-basic (0.279298ms)
+  ✔ resbasic-basic (0.949492ms)
+  ✔ resheaders-basic (0.49971ms)
+  ✔ resbody-basic (0.379377ms)
+  ✔ resbody-empty (9.650312ms)
+  ✔ request-basic (1.988679ms)
+  ✔ response-basic (0.477791ms)
+  ✔ done-basic (4.169597ms)
+  ✔ error-basic (4.554772ms)
+  ✔ makePoint-basic (1.495556ms)
+  ✔ makeFetchDef (0.654672ms)
+  ✔ makeFetchDef-with-body (0.363933ms)
+  ✔ featureAdd (0.189748ms)
+  ✔ featureHook (0.399804ms)
+  ✔ featureInit (0.189355ms)
+  ✔ featureInit-inactive (0.146984ms)
+  ✔ fetcher-live (3.391254ms)
+  ✔ fetcher-blocked-test-mode (2.781821ms)
+  ✔ makeError-no-throw (0.5815ms)
+  ✔ path-basic (0.382789ms)
+  ✔ clean-corpus (0.568725ms)
+  ✔ clean (0.244637ms)
+✔ PrimaryUtility (79.749398ms)
+▶ struct
+  ✔ exists (2.872893ms)
+  ✔ minor-isnode (0.859759ms)
+  ✔ minor-ismap (0.508626ms)
+  ✔ minor-islist (0.258319ms)
+  ✔ minor-iskey (0.268853ms)
+  ✔ minor-strkey (0.323216ms)
+  ✔ minor-isempty (0.241804ms)
+  ✔ minor-isfunc (0.25773ms)
+  ✔ minor-clone (1.896183ms)
+  ✔ minor-edge-clone (0.9539ms)
+  ✔ minor-filter (0.243699ms)
+  ✔ minor-flatten (0.266615ms)
+  ✔ minor-escre (0.173642ms)
+  ✔ minor-escurl (0.198243ms)
+  ✔ minor-stringify (0.513658ms)
+  ✔ minor-edge-stringify (13.41771ms)
+  ✔ minor-jsonify (0.766369ms)
+  ✔ minor-edge-jsonify (0.514219ms)
+  ✔ minor-pathify (1.615495ms)
+  ✔ minor-items (0.535971ms)
+  ✔ minor-edge-items (0.386252ms)
+  ✔ minor-getelem (0.437746ms)
+  ✔ minor-edge-getelem (0.225974ms)
+  ✔ minor-getprop (0.616168ms)
+  ✔ minor-edge-getprop (0.14724ms)
+  ✔ minor-setprop (0.527672ms)
+  ✔ minor-edge-setprop (0.287896ms)
+  ✔ minor-delprop (0.305514ms)
+  ✔ minor-edge-delprop (0.125663ms)
+  ✔ nullsem (0.565926ms)
+  ✔ minor-haskey (0.318351ms)
+  ✔ minor-keysof (0.116766ms)
+  ✔ minor-edge-keysof (0.079691ms)
+  ✔ minor-join (1.027974ms)
+  ✔ minor-typename (0.855531ms)
+  ✔ minor-typify (0.149809ms)
+  ✔ minor-edge-typify (0.236715ms)
+  ✔ minor-size (0.201211ms)
+  ✔ minor-slice (2.691182ms)
+  ✔ minor-pad (1.735537ms)
+  ✔ minor-setpath (0.755063ms)
+  ✔ minor-edge-setpath (0.127739ms)
+  ✔ walk-log (0.546881ms)
+  ✔ walk-basic (0.771962ms)
+  ✔ walk-depth (0.591464ms)
+  ✔ walk-copy (0.574754ms)
+  ✔ merge-basic (0.17201ms)
+  ✔ merge-cases (0.924413ms)
+  ✔ merge-array (0.485053ms)
+  ✔ merge-integrity (0.536258ms)
+  ✔ merge-depth (0.695385ms)
+  ✔ merge-special (0.551168ms)
+  ✔ getpath-basic (0.566309ms)
+  ✔ getpath-relative (0.361492ms)
+  ✔ getpath-special (0.721232ms)
+  ✔ getpath-handler (0.186386ms)
+  ✔ inject-basic (0.261192ms)
+  ✔ inject-string (0.876031ms)
+  ✔ inject-deep (1.142037ms)
+  ✔ transform-basic (0.263258ms)
+  ✔ transform-paths (2.358377ms)
+  ✔ transform-cmds (4.255807ms)
+  ✔ transform-each (10.897964ms)
+  ✔ transform-pack (8.77215ms)
+  ✔ transform-ref (5.951717ms)
+  ✔ transform-format (1.663018ms)
+  ✔ transform-apply (1.551196ms)
+  ✔ transform-edge-apply (0.441809ms)
+  ✔ transform-modify (0.286447ms)
+  ✔ transform-extra (0.620035ms)
+  ✔ transform-funcval (0.226092ms)
+  ✔ validate-basic (4.134029ms)
+  ✔ validate-child (3.873073ms)
+  ✔ validate-one (2.898955ms)
+  ✔ validate-exact (2.226024ms)
+  ✔ validate-invalid (1.16161ms)
+  ✔ validate-special (2.058694ms)
+  ✔ validate-edge (1.312238ms)
+  ✔ validate-custom (0.528072ms)
+  ✔ select-basic (3.311498ms)
+  ✔ select-operators (18.648218ms)
+  ✔ select-edge (10.839716ms)
+  ✔ select-alts (1.518789ms)
+  ✔ json-builder (0.778041ms)
+✔ struct (159.620363ms)
+ℹ tests 249
+ℹ suites 34
+ℹ pass 237
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 12
+ℹ todo 0
+ℹ duration_ms 11688.43858

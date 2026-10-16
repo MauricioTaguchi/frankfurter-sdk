@@ -1,0 +1,11 @@
+{
+  "rate": {
+    "date": "2026-10-01",
+    "base": "EUR",
+    "quote": "BRL",
+    "rate": 5.8804
+  },
+  "listCount": 1,
+  "currencyCount": 165,
+  "invalidStatus": 422
+}

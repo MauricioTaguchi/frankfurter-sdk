@@ -1,0 +1,54 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> build-frankfurter-sdk@0.0.1 generate
+> node build/docgen.js && tsc --build src && voxgig-model model/sdk.aontu && voxgig-model test/test.aontu
+
+[11:21:02.045] INFO: model                  model-init           
+[11:21:02.053] INFO: model                  build-start          watch:config last:2026-10-16T14:21:02.053Z
+[11:21:02.054] INFO: model                  build-trigger        watch:config trigger:<config>
+[11:21:02.114] INFO: model                  root-keys            watch:config keys: sys
+[11:21:02.114] INFO: model                  build-end            watch:config
+
+[11:21:02.114] INFO: model                  build-start          watch:model last:2026-10-16T14:21:02.114Z
+[11:21:02.115] INFO: model                  build-trigger        watch:model trigger:<start>
+[11:21:02.699] INFO: model                  pre-actions          apidef
+[11:21:02.701] INFO: model/apidef           generate-start       ./def/frankfurter-openapi.json
+[11:21:02.763] INFO: model/apidef           root-keys            openapi, info, servers, paths, components
+[11:21:02.794] INFO: model/apidef           heuristic01          entities=4 paths=9 methods=9 tags=0 cmps=5 entity-paths=9 entity-ops=9
+[11:21:02.795] INFO: model/apidef           metrics              epr=0.444  emr=0.444  (entity=4 paths=9 methods=9)
+[11:21:02.798] INFO: model/apidef           generate-guide       ./model/guide/guide.aontu
+[11:21:02.893] INFO: model/apidef           generate-end         success
+
+[11:21:02.902] INFO: model                  write-model          ./model/sdk.json
+[11:21:02.903] INFO: model                  post-actions         sdkgen
+[11:21:02.906] INFO: model/sdkgen           generate-start       
+[11:21:02.909] WARN: model/sdkgen           flow-step-unreachable flow step(s) BasicRateFlow#1 (load) switched off: the call they make reaches no route of the operation. Every route needs an action, or a path parameter the step does not give.
+[11:21:03.006] INFO: model/jostraca         generate-agentguide-top name:Frankfurter
+[11:21:03.008] INFO: model/jostraca         generate-deploy      targets: ts:npm(publish pending)
+[11:21:03.011] INFO: model/jostraca         generate-publish-workflow npm targets: ts
+[11:21:03.027] INFO: model/jostraca         generate-entity      target:ts, entity: coverage
+[11:21:03.034] INFO: model/jostraca         generate-entity      target:ts, entity: currency
+[11:21:03.038] INFO: model/jostraca         generate-entity      target:ts, entity: provider
+[11:21:03.044] INFO: model/jostraca         generate-entity      target:ts, entity: rate
+[11:21:03.046] INFO: model/jostraca         generate-feature     target:ts, feature: test
+[11:21:03.070] INFO: model/jostraca         generate-main        target:ts
+[11:21:03.093] INFO: model/jostraca         generate-agentguide-feature target:ts, feature:test
+[11:21:03.093] INFO: model/jostraca         generate-agentguide  target:ts
+[11:21:03.137] INFO: model/jostraca         generate-test        target:ts
+[11:21:03.395] INFO: model/sdkgen           generate-end         
+[11:21:03.395] INFO: model                  root-keys            watch:model keys: def;main;name;origin;name__orig;Name;name_;name-;NAME;const
+[11:21:03.396] INFO: model                  build-end            watch:model
+
+[11:21:03.930] INFO: model                  model-init           
+[11:21:03.936] INFO: model                  build-start          watch:config last:2026-10-16T14:21:03.935Z
+[11:21:03.936] INFO: model                  build-trigger        watch:config trigger:<config>
+[11:21:03.986] INFO: model                  root-keys            watch:config keys: sys
+[11:21:03.986] INFO: model                  build-end            watch:config
+
+[11:21:03.987] INFO: model                  build-start          watch:model last:2026-10-16T14:21:03.987Z
+[11:21:03.987] INFO: model                  build-trigger        watch:model trigger:<start>
+[11:21:04.555] INFO: model                  pre-actions          
+[11:21:04.576] INFO: model                  post-actions         
+[11:21:04.576] INFO: model                  root-keys            watch:model keys: feature;primary;struct
+[11:21:04.577] INFO: model                  build-end            watch:model
+
