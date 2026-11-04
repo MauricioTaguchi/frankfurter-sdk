@@ -1,9 +1,10 @@
 name: Quickstart verification
 on:
   push:
-    branches: ['devrel/reproducible-quickstart']
+    branches: [main, 'devrel/reproducible-quickstart']
+    paths: ['QUICKSTART.md', 'CONTRIBUTING.md', 'scripts/quickstart-offline.cjs', 'ts/**', '.github/workflows/quickstart-check.yml']
   pull_request:
-    paths: ['QUICKSTART.md', 'scripts/quickstart-offline.cjs', 'ts/**', '.github/workflows/quickstart-check.yml']
+    paths: ['QUICKSTART.md', 'CONTRIBUTING.md', 'scripts/quickstart-offline.cjs', 'ts/**', '.github/workflows/quickstart-check.yml']
   workflow_dispatch:
 permissions:
   contents: read
