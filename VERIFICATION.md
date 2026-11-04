@@ -2,7 +2,13 @@
 
 Use Node.js 24 or later. No API key is required. This repository does not contain credentials.
 
-## Versions used
+## Use the existing SDK
+
+Start with [QUICKSTART.md](QUICKSTART.md) to install from source, compile, run the offline example and optionally run the separate live check. Consuming the checked-in SDK does not require regeneration. The package is not published by these verification workflows.
+
+The generation instructions and original measurements below are retained as historical evidence, not presented as a new execution.
+
+## Versions used for the original scaffold
 
 | Component | Version |
 | --- | --- |
@@ -29,7 +35,9 @@ npm exec --yes --package=@voxgig/create-sdkgen@0.30.7 -- \
 SHA-256 of the specification:
 `2f3e6a4012b8461401e462237ef4f5122fd6cf71b766db948fe86fd696745fe4`.
 
-## From this checkout
+## Regenerate and verify from this checkout
+
+These steps rewrite generated output. Use a clean worktree or preserve your changes first; they are for reproducing generation, not required for first-time consumption.
 
 ```sh
 cd .sdk
@@ -43,11 +51,11 @@ cd ..
 node scripts/smoke-live.cjs
 ```
 
-If your environment requires its already-configured HTTP proxy, Node 24 supports `node --use-env-proxy scripts/smoke-live.cjs`. That flag was used for the recorded live run. Do not change proxy or TLS settings unnecessarily.
+If your environment requires its already-configured HTTP proxy, Node 24 supports `node --use-env-proxy scripts/smoke-live.cjs`. That flag was used for the original recorded live run. Do not change proxy or TLS settings unnecessarily.
 
 The smoke script invokes generated entity methods, checks the filtered list against the single rate, and uses `direct()` to validate a real error response. A failure exits nonzero. It does not modify remote data.
 
-## Observed results
+## Original local observations
 
 - Build and tests: 249 total, 237 passed, 12 skipped, zero failed.
 - Skipped tests: optional validate, timeout, retry, netsim, ratelimit and cost features not enabled in this project.
@@ -57,5 +65,15 @@ The smoke script invokes generated entity methods, checks the filtered list agai
 - Live currencies: 165 returned at execution time; the script asserts a nonempty list, not a fixed count.
 - Invalid currency: HTTP 422.
 
-Selected output is retained in `evidence/`. Full generated tests are included. A clean GitHub Actions run has not yet been observed; local checks are the evidence reported here.
+Selected original output is retained in `evidence/`. Full generated tests are included. These original observations were local; they should not be confused with the later automated runs below. Counts and historical exchange-rate values are observations from an execution, not permanent test expectations.
 
+## Subsequent automated evidence
+
+| Scope | Recorded run | What was checked |
+| --- | --- | --- |
+| Offline quickstart | [41747308471](https://github.com/MauricioTaguchi/frankfurter-sdk/actions/runs/41747308471) | Locked installation, existing test suite and compiled-SDK example with zero fetch calls. |
+| Live API integration | [41747308382](https://github.com/MauricioTaguchi/frankfurter-sdk/actions/runs/41747308382) | Locked installation, SDK build and the existing read-only historical API smoke check. |
+
+These executions were recorded on 4 November 2026 UTC, corresponding to 3 November in Sao Paulo. The live job used the generated SDK and checked the historical single-rate/list agreement, a nonempty currency list and the invalid-currency response. It was not an offline mock and it did not perform a financial transaction.
+
+The offline and live checks are separate workflows. A successful run is evidence for that checkout and execution, not proof that an external service will remain available. Updating this document does not rerun those historical jobs or regenerate the SDK. Read the current workflow result for new changes, and report failures and skipped tests explicitly.
